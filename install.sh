@@ -38,10 +38,6 @@ check_if_run_as_root() {
     [[ $EUID -ne 0 ]] && show_error "Please run as root"
 }
 
-check_if_wget_is_installed() {
-    which wget >/dev/null || show_error "Please install wget"
-}
-
 is_ipv6() {
     local ipv6
     ipv6=$(wget -qO- -t1 -T2 ipv6.icanhazip.com)
@@ -166,7 +162,6 @@ run_shadowsocks() {
 
 install_shadowsocks() {
     check_if_run_as_root
-    check_if_wget_is_installed
     config_shadowsocks
     download_shadowsocks
     run_shadowsocks
