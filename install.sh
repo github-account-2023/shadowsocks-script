@@ -6,7 +6,7 @@ red='\033[0;31m'
 green='\033[0;32m'
 color='\033[0m'
 
-shadowsocks_config='/etc/shadowsocks-libev/config.json'
+shadowsocks_config='/var/snap/shadowsocks-libev/common/etc/shadowsocks-libev/config.json'
 
 methods=(
     aes-256-gcm
@@ -153,11 +153,15 @@ EOF
 download_shadowsocks() {
     # todo
     echo "assuming that I am downloading ss-server..."
+    apt install snap
+    snap install shadowsocks-libev --edge
 }
 
 run_shadowsocks() {
     # todo
     echo "assuming that I am running ss-server..."
+    systemctl start snap.shadowsocks-libev.ss-server-daemon.service
+    systemctl enable snap.shadowsocks-libev.ss-server-daemon.service
 }
 
 install_shadowsocks() {
