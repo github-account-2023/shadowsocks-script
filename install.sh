@@ -142,7 +142,6 @@ config_shadowsocks() {
     "server_port":${shadowsocks_port},
     "password":"${shadowsocks_pwd}",
     "timeout":300,
-    "user":"nobody",
     "method":"${shadowsocks_method}",
     "fast_open":false,
     "mode":"tcp_and_udp"
@@ -151,15 +150,11 @@ EOF
 }
 
 download_shadowsocks() {
-    # todo
-    echo "assuming that I am downloading ss-server..."
     apt install snap
     snap install shadowsocks-libev --edge
 }
 
 run_shadowsocks() {
-    # todo
-    echo "assuming that I am running ss-server..."
     systemctl start snap.shadowsocks-libev.ss-server-daemon.service
     systemctl enable snap.shadowsocks-libev.ss-server-daemon.service
 }
