@@ -150,7 +150,7 @@ EOF
 }
 
 download_shadowsocks() {
-    apt install snap
+    apt install snapd
     snap install shadowsocks-libev --edge
 }
 
