@@ -119,11 +119,12 @@ config_shadowsocks_method() {
 }
 
 config_shadowsocks_password() {
+    UUID=$(cat /proc/sys/kernel/random/uuid)
     echo "Please enter password"
-    read -p '(Default password: pwd2022):' shadowsocks_pwd
-    [ -z "${shadowsocks_pwd}" ] && shadowsocks_pwd='pwd2022'
+    read -p "(Default password: ${UUID}):" shadowsocks_pwd
+    [ -z "${shadowsocks_pwd}" ] && shadowsocks_pwd="${UUID}"
     echo
-    echo "password = ${shadowsocks_pwd}"
+    echo "password = ${UUID}"
     echo
 }
 
